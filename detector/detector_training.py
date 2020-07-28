@@ -32,7 +32,7 @@ directory = r"./datasets/"
 
 batch_size = 32
 initial_lr = 1e-4
-epochs_number = 20
+epochs_number = 5
 
 # LOADING THE LIST OF DATA USED FOR TRAINING
 
@@ -120,7 +120,7 @@ for layer in base_model.layers :
 print("PROCESS - Compiling model ...")
 
 optimizer = Adam(lr = initial_lr, decay = initial_lr / epochs_number)
-model.compile(loss = "binary_crossentropy", optimizer = optimizer)
+model.compile(loss = "binary_crossentropy", optimizer = optimizer, metrics = "accuracy")
 
 
 # TRAINING HEAD OF MODEL 
@@ -174,7 +174,7 @@ plt.plot(np.arange(0, n), T.history["val_accuracy"], label = "val_acc")
 plt.title("Training loss & accuracy")
 plt.xlabel("Epoch number")
 plt.ylabel("Loss/accuracy")
-plt.legend(loc = "lower right")
+plt.legend(loc = "lower left")
 
 plt.savefig("plot.png")
 
