@@ -24,15 +24,15 @@ import os
 
 # CATEGORIES AND DIRECTORY PARAMETERS
 
-categories = ['mask_off', "mask_on"]
-directory = r"./datasets/"
+directory = r"./datasets"
+categories = ["with_mask", "without_mask"]
 
 
 # INITIALIZATION : BATCH SIZE, INITIAL LEARNING RATE, EPOCHS NUMBER
 
 batch_size = 32
 initial_lr = 1e-4
-epochs_number = 5
+epochs_number = 10
 
 # LOADING THE LIST OF DATA USED FOR TRAINING
 
@@ -43,12 +43,12 @@ labels = []
 
 for category in categories :
     path = os.path.join(directory, category)
-    for image in os.listdir(path) :
-        image_path = os.path.join(path, image)
-        images = load_img(image_path, target_size = (224, 224))
-        images = img_to_array(images)
-        images = preprocess_input(images)
-        data.append(images)
+    for img in os.listdir(path) :
+        img_path = os.path.join(path, img)
+        image = load_img(img_path, target_size = (224, 224))
+        image = img_to_array(image)
+        image = preprocess_input(image)
+        data.append(image)
         labels.append(category)
 
 
