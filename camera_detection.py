@@ -101,11 +101,10 @@ while True :
        color = (0, 255, 0) if label == "Mask :)" else (0, 0, 255)
 
        # INCLUDE PROBABILITY IN LABEL
-       label = f"{label} : {round(max(mask, without_mask) * 100, 2)}%"
-
+       label = f"{label} : {round(max(mask, without_mask) * 100, 2)} %"
+       
        # DISPLAY LABEL AND BOUNDING BOX RECTANGLE ON OUTPUT FRAME
-       cv2.putText(frame, label, (start_x, start_y - 10), 
-       cv2.FONT_HERSHEY_COMPLEX, 1, color, 2)
+       cv2.putText(frame, label, (start_x, start_y - 10), cv2.FONT_HERSHEY_COMPLEX, 1, color, 2)
        cv2.rectangle(frame, (start_x, start_y), (end_x, end_y), color, 2)
 
 
